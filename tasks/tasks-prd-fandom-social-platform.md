@@ -206,6 +206,10 @@ Note: This project uses Next.js as the primary web framework (App Router), with 
   - [ ] 4.9 Add community voting and polling features
   - [ ] 4.10 Implement community activity feeds
 
+  - [ ] 4.11 Implement event-centric community UI (active/upcoming/past tabs)
+  - [ ] 4.12 Add watch parties for streams on community and event pages
+  - [ ] 4.13 Support hashtags and trending topics within communities
+
 - [ ] 5.0 AI/ML Integration & GNN Implementation
   - [ ] 5.1 Set up graph database (Neo4j or Amazon Neptune)
   - [ ] 5.2 Design user interaction graph schema
@@ -220,6 +224,9 @@ Note: This project uses Next.js as the primary web framework (App Router), with 
   - [ ] 5.11 Build AI-powered content curation
   - [ ] 5.12 Implement influence analysis and PageRank algorithms
 
+  - [ ] 5.13 AI-powered event curation: elevate meaningful posts vs infinite scroll
+  - [ ] 5.14 Trend detection around hashtags and events
+
 - [ ] 6.0 Digital Archiving System
   - [ ] 6.1 Design archive database schema
   - [ ] 6.2 Create media upload and storage system
@@ -231,6 +238,9 @@ Note: This project uses Next.js as the primary web framework (App Router), with 
   - [ ] 6.8 Create event-based memory grouping
   - [ ] 6.9 Implement search and filtering for archived content
   - [ ] 6.10 Add memory export and backup functionality
+
+  - [ ] 6.11 Build Event Capsules: aggregated media/posts/highlights per event
+  - [ ] 6.12 Personal timelines: auto-archive attended events and contributions
 
 - [ ] 7.0 Privacy & Safety Features
   - [ ] 7.1 Implement granular privacy settings system
@@ -269,6 +279,10 @@ Note: This project uses Next.js as the primary web framework (App Router), with 
   - [ ] 8.8 Implement cross-platform event synchronization
   - [ ] 8.9 Build external service error handling
   - [ ] 8.10 Create integration configuration management
+
+  - [ ] 8.11 Twitch integration: auto-create events from scheduled streams
+  - [ ] 8.12 YouTube Live integration: watch parties and post-event archives
+  - [ ] 8.13 Streamer tools: backstage Q&A, polls, exclusive chats
 
 - [ ] 9.0 Testing & Quality Assurance
   - [ ] 9.1 Set up unit testing for all components
