@@ -1,0 +1,365 @@
+# Task List: Fandom Social Platform Implementation
+*Based on PRD: prd-fandom-social-platform.md*
+
+## Relevant Files
+
+- `src/components/auth/LoginForm.tsx` - User authentication login component
+- `src/components/auth/RegisterForm.tsx` - User registration component
+- `src/components/auth/LoginForm.test.tsx` - Unit tests for LoginForm
+- `src/components/auth/RegisterForm.test.tsx` - Unit tests for RegisterForm
+- `src/components/profile/UserProfile.tsx` - User profile display and editing component
+- `src/components/profile/UserProfile.test.tsx` - Unit tests for UserProfile
+- `src/components/events/EventCard.tsx` - Event display card component
+- `src/components/events/EventForm.tsx` - Event creation and editing form
+- `src/components/events/EventCard.test.tsx` - Unit tests for EventCard
+- `src/components/events/EventForm.test.tsx` - Unit tests for EventForm
+- `src/components/communities/CommunityCard.tsx` - Community display component
+- `src/components/communities/CommunityForm.tsx` - Community creation form
+- `src/components/communities/CommunityCard.test.tsx` - Unit tests for CommunityCard
+- `src/components/communities/CommunityForm.test.tsx` - Unit tests for CommunityForm
+- `src/components/chat/ChatInterface.tsx` - Group chat interface component
+- `src/components/chat/ChatInterface.test.tsx` - Unit tests for ChatInterface
+- `src/components/archive/MemoryTimeline.tsx` - Digital memory timeline component
+- `src/components/archive/MemoryTimeline.test.tsx` - Unit tests for MemoryTimeline
+- `src/services/authService.ts` - Authentication service with API calls
+- `src/services/eventService.ts` - Event management service
+- `src/services/communityService.ts` - Community management service
+- `src/services/chatService.ts` - Chat functionality service
+- `src/services/archiveService.ts` - Digital archiving service
+- `src/services/gnnService.ts` - Graph Neural Network service for recommendations
+- `src/services/authService.test.ts` - Unit tests for authService
+- `src/services/eventService.test.ts` - Unit tests for eventService
+- `src/services/communityService.test.ts` - Unit tests for communityService
+- `src/services/chatService.test.ts` - Unit tests for chatService
+- `src/services/archiveService.test.ts` - Unit tests for archiveService
+- `src/services/gnnService.test.ts` - Unit tests for gnnService
+- `src/hooks/useAuth.ts` - Authentication state management hook
+- `src/hooks/useEvents.ts` - Event data management hook
+- `src/hooks/useCommunities.ts` - Community data management hook
+- `src/hooks/useChat.ts` - Chat functionality hook
+- `src/hooks/useArchive.ts` - Archive functionality hook
+- `src/hooks/useRecommendations.ts` - AI recommendation hook
+- `src/hooks/useAuth.test.ts` - Unit tests for useAuth
+- `src/hooks/useEvents.test.ts` - Unit tests for useEvents
+- `src/hooks/useCommunities.test.ts` - Unit tests for useCommunities
+- `src/hooks/useChat.test.ts` - Unit tests for useChat
+- `src/hooks/useArchive.test.ts` - Unit tests for useArchive
+- `src/hooks/useRecommendations.test.ts` - Unit tests for useRecommendations
+- `src/types/user.ts` - TypeScript interfaces for user data
+- `src/types/event.ts` - TypeScript interfaces for event data
+- `src/types/community.ts` - TypeScript interfaces for community data
+- `src/types/chat.ts` - TypeScript interfaces for chat data
+- `src/types/archive.ts` - TypeScript interfaces for archive data
+- `src/types/gnn.ts` - TypeScript interfaces for GNN data structures
+- `src/utils/validation.ts` - Input validation utilities
+- `src/utils/validation.test.ts` - Unit tests for validation utilities
+- `src/utils/gnnHelpers.ts` - Graph Neural Network utility functions
+- `src/utils/gnnHelpers.test.ts` - Unit tests for GNN helpers
+- `src/api/routes/auth.ts` - Authentication API routes
+- `src/api/routes/events.ts` - Event management API routes
+- `src/api/routes/communities.ts` - Community API routes
+- `src/api/routes/chat.ts` - Chat API routes
+- `src/api/routes/archive.ts` - Archive API routes
+- `src/api/routes/recommendations.ts` - AI recommendation API routes
+- `src/api/routes/auth.test.ts` - Unit tests for auth routes
+- `src/api/routes/events.test.ts` - Unit tests for event routes
+- `src/api/routes/communities.test.ts` - Unit tests for community routes
+- `src/api/routes/chat.test.ts` - Unit tests for chat routes
+- `src/api/routes/archive.test.ts` - Unit tests for archive routes
+- `src/api/routes/recommendations.test.ts` - Unit tests for recommendation routes
+- `src/database/models/User.ts` - User database model
+- `src/database/models/Event.ts` - Event database model
+- `src/database/models/Community.ts` - Community database model
+- `src/database/models/Chat.ts` - Chat database model
+- `src/database/models/Archive.ts` - Archive database model
+- `src/database/models/UserInteraction.ts` - User interaction graph model
+- `src/database/migrations/` - Database migration files
+- `src/ai/models/gnnModel.ts` - Graph Neural Network model implementation
+- `src/ai/models/contentModeration.ts` - Content moderation AI model
+- `src/ai/models/imageTagging.ts` - Image tagging AI model
+- `src/ai/models/gnnModel.test.ts` - Unit tests for GNN model
+- `src/ai/models/contentModeration.test.ts` - Unit tests for content moderation
+- `src/ai/models/imageTagging.test.ts` - Unit tests for image tagging
+- `src/ai/services/recommendationEngine.ts` - AI recommendation engine
+- `src/ai/services/recommendationEngine.test.ts` - Unit tests for recommendation engine
+- `src/ai/services/graphBuilder.ts` - Graph construction service
+- `src/ai/services/graphBuilder.test.ts` - Unit tests for graph builder
+- `src/ai/services/communityDetection.ts` - Community detection service
+- `src/ai/services/communityDetection.test.ts` - Unit tests for community detection
+- `src/integrations/discord.ts` - Discord integration service
+- `src/integrations/youtube.ts` - YouTube integration service
+- `src/integrations/twitch.ts` - Twitch integration service
+- `src/integrations/discord.test.ts` - Unit tests for Discord integration
+- `src/integrations/youtube.test.ts` - Unit tests for YouTube integration
+- `src/integrations/twitch.test.ts` - Unit tests for Twitch integration
+- `src/middleware/auth.ts` - Authentication middleware
+- `src/middleware/validation.ts` - Input validation middleware
+- `src/middleware/rateLimit.ts` - API rate limiting middleware
+- `src/middleware/auth.test.ts` - Unit tests for auth middleware
+- `src/middleware/validation.test.ts` - Unit tests for validation middleware
+- `src/middleware/rateLimit.test.ts` - Unit tests for rate limit middleware
+- `src/config/database.ts` - Database configuration
+- `src/config/ai.ts` - AI/ML configuration
+- `src/config/integrations.ts` - External integrations configuration
+- `src/config/security.ts` - Security and privacy configuration
+- `src/pages/Login.tsx` - Login page component
+- `src/pages/Register.tsx` - Registration page component
+- `src/pages/Dashboard.tsx` - Main user dashboard
+- `src/pages/Events.tsx` - Events discovery page
+- `src/pages/Communities.tsx` - Communities page
+- `src/pages/Profile.tsx` - User profile page
+- `src/pages/Archive.tsx` - Digital archive page
+- `src/pages/Login.test.tsx` - Unit tests for Login page
+- `src/pages/Register.test.tsx` - Unit tests for Register page
+- `src/pages/Dashboard.test.tsx` - Unit tests for Dashboard
+- `src/pages/Events.test.tsx` - Unit tests for Events page
+- `src/pages/Communities.test.tsx` - Unit tests for Communities page
+- `src/pages/Profile.test.tsx` - Unit tests for Profile page
+- `src/pages/Archive.test.tsx` - Unit tests for Archive page
+- `src/App.tsx` - Main application component
+- `src/App.test.tsx` - Unit tests for App component
+- `src/index.tsx` - Application entry point
+- `package.json` - Project dependencies and scripts
+- `tsconfig.json` - TypeScript configuration
+- `jest.config.js` - Jest testing configuration
+- `webpack.config.js` - Webpack build configuration
+- `docker-compose.yml` - Docker development environment
+- `Dockerfile` - Production Docker image
+- `README.md` - Project documentation
+- `.env.example` - Environment variables template
+- `.gitignore` - Git ignore rules
+
+### Notes
+
+- Unit tests should typically be placed alongside the code files they are testing (e.g., `MyComponent.tsx` and `MyComponent.test.tsx` in the same directory).
+- Use `npx jest [optional/path/to/test/file]` to run tests. Running without a path executes all tests found by the Jest configuration.
+- The GNN implementation will require specialized AI/ML libraries (PyTorch Geometric, DGL) and may need separate Python services.
+- Database models should include both SQL (for structured data) and graph database (Neo4j/Neptune) for user interactions.
+- Integration services should be implemented as microservices for better scalability.
+
+#### Messaging Architecture Options
+
+- 2. End-to-End Encrypted Centralized Messaging (Recommended)
+  - Description: Messages are routed through a platform’s servers, but encrypted so the server (and therefore the company) cannot read message content.
+  - Examples: WhatsApp, Signal
+
+Note: This project uses Next.js as the primary web framework (App Router), with API Route Handlers for backend endpoints.
+
+#### UI/UX Stack
+
+- Framework: Next.js (App Router)
+- Styling: Tailwind CSS v4
+- Component Library: shadcn/ui (built on Radix UI primitives)
+- Design Tokens: Tailwind CSS variables (colors, spacing, typography)
+- Theming: Light/Dark themes with CSS variables and system preference support
+- Accessibility: Radix UI primitives + WCAG 2.1 AA targets, keyboard navigation, focus states
+- Icons: Lucide Icons
+- Motion: CSS transitions; consider Framer Motion for complex interactions
+
+## Tasks
+
+- [ ] 1.0 Core Platform Foundation
+  - [ ] 1.1 Set up project structure with TypeScript, Next.js (App Router), Bun.js, shadcn/ui, Tailwind CSS
+  - [ ] 1.2 Configure Next.js settings (next.config.js), ESLint, Prettier
+  - [ ] 1.3 Set up testing (Jest with next/jest, React Testing Library, Playwright)
+  - [ ] 1.4 Create Docker development environment with docker-compose.yml
+  - [ ] 1.5 Set up CI/CD pipeline configuration
+  - [ ] 1.6 Configure environment variables and secrets management
+  - [ ] 1.7 Set up logging and monitoring infrastructure
+  - [ ] 1.8 Create App Router structure under src/app with route groups/layouts
+  - [ ] 1.9 Add Next.js middleware.ts for auth/security and edge use-cases
+  - [ ] 1.10 Configure API Route Handlers under app/api/* (REST endpoints)
+
+- [ ] 2.0 User Management & Authentication
+  - [ ] 2.1 Design and implement user database schema
+  - [ ] 2.2 Create user authentication API endpoints (register, login, logout)
+  - [ ] 2.3 Implement JWT token-based authentication
+  - [ ] 2.4 Create user profile management system
+  - [ ] 2.5 Build user onboarding flow with interest selection
+  - [ ] 2.6 Implement password reset and email verification
+  - [ ] 2.7 Create user profile editing interface
+  - [ ] 2.8 Implement user account deletion with data retention options
+  - [ ] 2.9 Add user privacy preference settings
+  - [ ] 2.10 Create authentication middleware for protected routes
+
+- [ ] 3.0 Event Management System
+  - [ ] 3.1 Design and implement event database schema
+  - [ ] 3.2 Create event CRUD API endpoints
+  - [ ] 3.3 Build event creation form with validation
+  - [ ] 3.4 Implement event discovery with search and filters
+  - [ ] 3.5 Create event detail pages with RSVP functionality
+  - [ ] 3.6 Implement location-based event recommendations
+  - [ ] 3.7 Build event reminder notification system
+  - [ ] 3.8 Create event organizer dashboard
+  - [ ] 3.9 Implement virtual event support
+  - [ ] 3.10 Add event category and tagging system
+
+- [ ] 4.0 Community Building Features
+  - [ ] 4.1 Design and implement community database schema
+  - [ ] 4.2 Create community CRUD API endpoints
+  - [ ] 4.3 Build community creation and management interface
+  - [ ] 4.4 Implement community discovery and joining system
+  - [ ] 4.5 Create group chat functionality with WebSockets
+  - [ ] 4.6 Build community forums and discussion threads
+  - [ ] 4.7 Implement community moderation tools
+  - [ ] 4.8 Create community member management system
+  - [ ] 4.9 Add community voting and polling features
+  - [ ] 4.10 Implement community activity feeds
+
+- [ ] 5.0 AI/ML Integration & GNN Implementation
+  - [ ] 5.1 Set up graph database (Neo4j or Amazon Neptune)
+  - [ ] 5.2 Design user interaction graph schema
+  - [ ] 5.3 Implement graph data collection and streaming
+  - [ ] 5.4 Create GNN model architecture (GCN, GAT, Temporal)
+  - [ ] 5.5 Build friend recommendation engine using GNN
+  - [ ] 5.6 Implement event recommendation system
+  - [ ] 5.7 Create community detection algorithms
+  - [ ] 5.8 Build content moderation AI system
+  - [ ] 5.9 Implement image tagging and content analysis
+  - [ ] 5.10 Create real-time graph update system
+  - [ ] 5.11 Build AI-powered content curation
+  - [ ] 5.12 Implement influence analysis and PageRank algorithms
+
+- [ ] 6.0 Digital Archiving System
+  - [ ] 6.1 Design archive database schema
+  - [ ] 6.2 Create media upload and storage system
+  - [ ] 6.3 Implement memory timeline interface
+  - [ ] 6.4 Build content tagging and organization system
+  - [ ] 6.5 Create privacy controls for archived content
+  - [ ] 6.6 Implement AI-powered content curation
+  - [ ] 6.7 Build memory sharing and collaboration features
+  - [ ] 6.8 Create event-based memory grouping
+  - [ ] 6.9 Implement search and filtering for archived content
+  - [ ] 6.10 Add memory export and backup functionality
+
+- [ ] 7.0 Privacy & Safety Features
+  - [ ] 7.1 Implement granular privacy settings system
+  - [ ] 7.2 Create content reporting and moderation tools
+  - [ ] 7.3 Build user blocking and muting functionality
+  - [ ] 7.4 Implement AI-powered spam and abuse detection
+  - [ ] 7.5 Create consent management system
+  - [ ] 7.6 Build content flagging and review system
+  - [ ] 7.7 Implement data encryption and security measures
+  - [ ] 7.8 Create privacy dashboard for users
+  - [ ] 7.9 Build automated content moderation pipeline
+  - [ ] 7.10 Implement GDPR compliance features
+
+- [ ] 7.11 Implement sentiment-based auto‑moderation bot
+  - [ ] 7.11.1 Define policies, labels, and sentiment thresholds per locale
+  - [ ] 7.11.2 Select sentiment classifier (Transformer-based, multilingual) and baseline
+  - [ ] 7.11.3 Create real-time text ingestion hooks (posts, comments, chat)
+  - [ ] 7.11.4 Build inference service with batching, caching, and rate limits
+  - [ ] 7.11.5 Implement action engine: allow/warn/hold/remove/escalate with reason codes
+  - [ ] 7.11.6 Add safety lexicon filters (slurs, hate, self-harm) beyond sentiment
+  - [ ] 7.11.7 Human-in-the-loop review queue and moderator override workflow
+  - [ ] 7.11.8 Audit logging and explainability payloads (scores, features, rules)
+  - [ ] 7.11.9 Metrics & monitoring (precision/recall, FPR, latency, cost)
+  - [ ] 7.11.10 Threshold tuning and A/B testing across cohorts
+  - [ ] 7.11.11 Moderator UI and API endpoints for actions and appeals
+  - [ ] 7.11.12 Tests and datasets: unit/integration/E2E, red-team edge cases
+
+- [ ] 8.0 External Integrations
+  - [ ] 8.1 Create Discord integration service
+  - [ ] 8.2 Implement YouTube API integration
+  - [ ] 8.3 Build Twitch API integration
+  - [ ] 8.4 Create webhook notification system
+  - [ ] 8.5 Implement OAuth authentication for external services
+  - [ ] 8.6 Build content import/export functionality
+  - [ ] 8.7 Create API rate limiting and management
+  - [ ] 8.8 Implement cross-platform event synchronization
+  - [ ] 8.9 Build external service error handling
+  - [ ] 8.10 Create integration configuration management
+
+- [ ] 9.0 Testing & Quality Assurance
+  - [ ] 9.1 Set up unit testing for all components
+  - [ ] 9.2 Create integration tests for API endpoints
+  - [ ] 9.3 Implement end-to-end testing with Cypress
+  - [ ] 9.4 Set up performance testing and monitoring
+  - [ ] 9.5 Create security testing and vulnerability scanning
+  - [ ] 9.6 Implement accessibility testing (WCAG 2.1 AA)
+  - [ ] 9.7 Set up code coverage reporting
+  - [ ] 9.8 Create load testing for GNN and chat systems
+  - [ ] 9.9 Implement automated testing in CI/CD pipeline
+  - [ ] 9.10 Create user acceptance testing framework
+
+- [ ] 10.0 Deployment & Infrastructure
+  - [ ] 10.1 Set up cloud infrastructure (AWS/Azure/GCP)
+  - [ ] 10.2 Configure container orchestration (Kubernetes/Docker Swarm)
+  - [ ] 10.3 Set up database clusters and replication
+  - [ ] 10.4 Configure CDN for media delivery
+  - [ ] 10.5 Implement auto-scaling for microservices
+  - [ ] 10.6 Set up monitoring and alerting systems
+  - [ ] 10.7 Configure backup and disaster recovery
+  - [ ] 10.8 Implement security scanning and compliance
+  - [ ] 10.9 Set up staging and production environments
+  - [ ] 10.10 Create deployment documentation and runbooks
+
+- [ ] 11.0 Application Security & Vulnerability Management
+  - [ ] 11.1 Perform threat modeling (STRIDE) per feature and update regularly
+  - [ ] 11.2 Establish secure coding standards and developer training
+  - [ ] 11.3 Implement input validation/sanitization across API and UI layers
+  - [ ] 11.4 Enforce authentication hardening (MFA, password policies, lockouts)
+  - [ ] 11.5 Implement robust authorization (RBAC/ABAC, least privilege, scope checks)
+  - [ ] 11.6 Secure session/JWT settings (short TTL, rotation, revocation, audience)
+  - [ ] 11.7 Protect against CSRF/XSS/SQLi/NoSQLi/Path traversal/SSRF
+  - [ ] 11.8 Add rate limiting, IP allow/deny lists, and abuse prevention
+  - [ ] 11.9 Configure security headers (CSP, HSTS, X-Frame-Options, Referrer-Policy)
+  - [ ] 11.10 Configure CORS policy with strict allowed origins and methods
+  - [ ] 11.11 Secure file uploads (MIME/type checks, AV scan, size/quota, sandbox)
+  - [ ] 11.12 Secrets management (vaulted, rotation, no plaintext in code/CI logs)
+  - [ ] 11.13 SAST/Secret scanning in CI (ESLint rules, Semgrep, GitLeaks)
+  - [ ] 11.14 Dependency/SCA scanning in CI (npm audit, Snyk, Dependabot)
+  - [ ] 11.15 DAST scanning in CI/CD (OWASP ZAP) against test/staging
+  - [ ] 11.16 Container/IaC security scans (Trivy, Checkov, kube-bench)
+  - [ ] 11.17 Supply chain security (lockfiles, provenance/SLSA, image signing)
+  - [ ] 11.18 Network/TLS security (TLS1.2+, mTLS internal, cert rotation)
+  - [ ] 11.19 Database security (encryption at rest, TLS in transit, row-level perms)
+  - [ ] 11.20 Logging & security monitoring (structured logs, SIEM integration)
+  - [ ] 11.21 Incident response playbooks and runbooks (triage, containment, comms)
+  - [ ] 11.22 Backup/restore tests and DR exercises with RPO/RTO targets
+  - [ ] 11.23 Privacy by design reviews and data minimization
+  - [ ] 11.24 Penetration testing and remediation tracking
+  - [ ] 11.25 Bug bounty or responsible disclosure program setup
+  - [ ] 11.26 Regular key/cert/secret rotation schedule and audits
+  - [ ] 11.27 Environment hardening (least privilege IAM, security groups, WAF)
+  - [ ] 11.28 Add red-team test cases to automated test suite
+  - [ ] 11.29 Security regression tests for critical user flows
+  - [ ] 11.30 Security checklist gate in CI for releases
+
+- [ ] 12.0 End-to-End Encrypted Messaging (E2EE)
+  - [ ] 12.1 Select protocol (Signal/Double Ratchet + X3DH vs MLS) with rationale
+  - [ ] 12.2 Implement identity keys and device keys (Ed25519/X25519)
+  - [ ] 12.3 Build X3DH/initial key agreement and session establishment
+  - [ ] 12.4 Implement Double Ratchet for message confidentiality/forward secrecy
+  - [ ] 12.5 Group messaging: Sender Keys or MLS with member lifecycle
+  - [ ] 12.6 Attachment encryption (streaming AEAD, chunking, CDN envelope)
+  - [ ] 12.7 Multi-device support and key sync with per-device sessions
+  - [ ] 12.8 Device verification UX (safety numbers/QR, cross-signing)
+  - [ ] 12.9 Key backup/recovery (secure enclave, passphrase-based, SRP/OPAQUE)
+  - [ ] 12.10 Message types: text, reactions, edits, deletes, ephemeral timers
+  - [ ] 12.11 Push notifications without content leakage (privacy-preserving previews)
+  - [ ] 12.12 Metadata minimization: sealed sender, padding, batching, timing defenses
+  - [ ] 12.13 Server: mailbox/fanout queues without plaintext access
+  - [ ] 12.14 Abuse controls compatible with E2EE (client-side flags, rate limits)
+  - [ ] 12.15 Reporting flows: encrypted evidence bundles + consented plaintext
+  - [ ] 12.16 Safety integrations: spam heuristics on metadata only
+  - [ ] 12.17 Backward compatibility and migration strategy from non-E2EE chat
+  - [ ] 12.18 Cryptographic libraries selection and side-channel hardening
+  - [ ] 12.19 Key rotation and session reset procedures
+  - [ ] 12.20 Comprehensive test suite (unit/property/fuzz/interop vectors)
+  - [ ] 12.21 External crypto review and formal verification where feasible
+  - [ ] 12.22 Compliance considerations (lawful requests, transparency, user comms)
+  - [ ] 12.23 Observability: encrypted-safe metrics and failure diagnostics
+  - [ ] 12.24 Disaster recovery drills without decrypting user content
+
+- [ ] 13.0 Design System & UX
+  - [ ] 13.1 Establish design tokens (colors, spacing, radius, typography)
+  - [ ] 13.2 Create core UI primitives (button, input, select, dialog, sheet)
+  - [ ] 13.3 Define page layouts and responsive breakpoints
+  - [ ] 13.4 Accessibility review (focus order, aria, color contrast)
+  - [ ] 13.5 Build component documentation with Storybook or Ladle
+  - [ ] 13.6 Define motion and interaction guidelines
+  - [ ] 13.7 Create UX copy guidelines and tone of voice
+  - [ ] 13.8 Implement dark/light theme switcher with persistence
+  - [ ] 13.9 Add iconography system (Lucide) and usage rules
+  - [ ] 13.10 Usability testing plan and feedback loop
